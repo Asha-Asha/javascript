@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo List</title>
+    <link rel="stylesheet" href="to.css">
+</head>
+<body>
+    <h1>Todo List</h1>
+    <input type="text" id="taskInput" placeholder="Enter a  task">
+    <button onclick="addTask()">Add</button>
+    <ul id="taskList" onclick="removeTask(event)"></ul>
+
+    <script>
+        function addTask() {
+            const taskInput = document.getElementById("taskInput");
+            const taskList = document.getElementById("taskList");
+            const taskText = taskInput.value.trim();
+
+            if (taskText !== "") {
+                const newTask = document.createElement("li");
+                newTask.textContent = taskText;
+                taskList.appendChild(newTask);
+                taskInput.value = "";
+            }
+        }
+
+        function removeTask(event) {
+            if (event.target.nodeName === "LI") {
+                event.target.remove();
+            }
+        }
+    </script>
+</body>
+</html>
